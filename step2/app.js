@@ -60,94 +60,94 @@ $form.addEventListener('submit', function (event) {
 $table.addEventListener('click', function (event) {
   event.preventDefault()
 
-  var $button = event.target
-  var $row = $button.closest('tr')
-  var id = $row.dataset.id
-  var action = $button.dataset.action
-
-  if (action === 'delete') {
-    contacts = contacts.filter(function (contact) {
-      return contact.id !== id
-    })
-    localStorage.setItem('contacts', JSON.stringify(contacts))
-    $row.remove()
-  }
-
-  if (action === 'edit') {
-    var $cells = $row.querySelectorAll('td')
-    var name = $cells[0].textContent.trim()
-    var contact = $cells[1].textContent.trim()
-    var note = $cells[2].textContent.trim()
-
-    $row.innerHTML = `
-      <td>
-        <input value="${name}" data-original="${name}">
-      </td>
-      <td>
-        <input value="${contact}" data-original="${contact}">
-      </td>
-      <td>
-        <textarea data-original="${note}">${note}</textarea>
-      </td>
-      <td class="actions">
-        <button data-action="save">save</button>
-        <a href="#" data-action="cancel">cancel</a>
-      </td>
-    `
-  }
-
-  if (action === 'save') {
-    var $inputs = $row.querySelectorAll('input, textarea')
-    var name = $inputs[0].value
-    var contact = $inputs[1].value
-    var note = $inputs[2].value
-
-    $row.innerHTML = `
-      <td>
-        ${name}
-      </td>
-      <td>
-        ${contact}
-      </td>
-      <td>
-        ${note}
-      </td>
-      <td class="actions">
-        <a href="#" data-action="edit">edit</a> |
-        <a href="#" data-action="delete">delete</a>
-      </td>
-    `
-
-    contacts.forEach(function (contactItem) {
-      if (contactItem.id === id) {
-        contactItem.name = name
-        contactItem.contact = contact
-        contactItem.note = note
-      }
-    })
-    localStorage.setItem('contacts', JSON.stringify(contacts))
-  }
-
-  if (action === 'cancel') {
-    var $inputs = $row.querySelectorAll('input, textarea')
-    var name = $inputs[0].dataset.original
-    var contact = $inputs[1].dataset.original
-    var note = $inputs[2].dataset.original
-
-    $row.innerHTML = `
-      <td>
-        ${name}
-      </td>
-      <td>
-        ${contact}
-      </td>
-      <td>
-        ${note}
-      </td>
-      <td class="actions">
-        <a href="#" data-action="edit">edit</a> |
-        <a href="#" data-action="delete">delete</a>
-      </td>
-    `
-  }
+  // var $button = event.target
+  // var $row = $button.closest('tr')
+  // var id = $row.dataset.id
+  // var action = $button.dataset.action
+  //
+  // if (action === 'delete') {
+  //   contacts = contacts.filter(function (contact) {
+  //     return contact.id !== id
+  //   })
+  //   localStorage.setItem('contacts', JSON.stringify(contacts))
+  //   $row.remove()
+  // }
+  //
+  // if (action === 'edit') {
+  //   var $cells = $row.querySelectorAll('td')
+  //   var name = $cells[0].textContent.trim()
+  //   var contact = $cells[1].textContent.trim()
+  //   var note = $cells[2].textContent.trim()
+  //
+  //   $row.innerHTML = `
+  //     <td>
+  //       <input value="${name}" data-original="${name}">
+  //     </td>
+  //     <td>
+  //       <input value="${contact}" data-original="${contact}">
+  //     </td>
+  //     <td>
+  //       <textarea data-original="${note}">${note}</textarea>
+  //     </td>
+  //     <td class="actions">
+  //       <button data-action="save">save</button>
+  //       <a href="#" data-action="cancel">cancel</a>
+  //     </td>
+  //   `
+  // }
+  //
+  // if (action === 'save') {
+  //   var $inputs = $row.querySelectorAll('input, textarea')
+  //   var name = $inputs[0].value
+  //   var contact = $inputs[1].value
+  //   var note = $inputs[2].value
+  //
+  //   $row.innerHTML = `
+  //     <td>
+  //       ${name}
+  //     </td>
+  //     <td>
+  //       ${contact}
+  //     </td>
+  //     <td>
+  //       ${note}
+  //     </td>
+  //     <td class="actions">
+  //       <a href="#" data-action="edit">edit</a> |
+  //       <a href="#" data-action="delete">delete</a>
+  //     </td>
+  //   `
+  //
+  //   contacts.forEach(function (contactItem) {
+  //     if (contactItem.id === id) {
+  //       contactItem.name = name
+  //       contactItem.contact = contact
+  //       contactItem.note = note
+  //     }
+  //   })
+  //   localStorage.setItem('contacts', JSON.stringify(contacts))
+  // }
+  //
+  // if (action === 'cancel') {
+  //   var $inputs = $row.querySelectorAll('input, textarea')
+  //   var name = $inputs[0].dataset.original
+  //   var contact = $inputs[1].dataset.original
+  //   var note = $inputs[2].dataset.original
+  //
+  //   $row.innerHTML = `
+  //     <td>
+  //       ${name}
+  //     </td>
+  //     <td>
+  //       ${contact}
+  //     </td>
+  //     <td>
+  //       ${note}
+  //     </td>
+  //     <td class="actions">
+  //       <a href="#" data-action="edit">edit</a> |
+  //       <a href="#" data-action="delete">delete</a>
+  //     </td>
+  //   `
+  // }
 })
