@@ -2,6 +2,9 @@
 
 > Build a simple HTML page that stores data in and renders data from localStorage
 
+[![localstorage tutorial video](screenshot.png)](https://youtu.be/8jGDxNnx3HM)
+
+
 This tutorial has 3 parts.
 
 1. **No data storage**  
